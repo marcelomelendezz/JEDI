@@ -37,6 +37,8 @@ function startJourney() {
 }
 
 function enterMineralRealm() {
+  aionQuestionsAsked = 0;
+  
   document.getElementById("game").innerHTML = `
     <img src="aionpix.png" class="npc-sprite" />
 
