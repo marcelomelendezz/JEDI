@@ -19,6 +19,8 @@ function enterGarden() {
 
 function startJourney() {
   document.getElementById("game").innerHTML = `
+    <img src="portalRM.png" class="portal-sprite" alt="Pixel Portal" />
+  
     <h2>The First Portal Opens</h2>
 
     <p class="dialogue">
