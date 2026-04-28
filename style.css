@@ -1,28 +1,85 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background: black;
-  color: #00ffcc;
-  font-family: monospace;
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at center, #102c2a 0%, #050807 55%, #000000 100%);
+  color: #d8fff6;
+  font-family: "Courier New", monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding-top: 100px;
+  image-rendering: pixelated;
+}
+
+#game {
+  width: min(92vw, 720px);
+  border: 4px solid #5fffd7;
+  background: rgba(0, 0, 0, 0.72);
+  padding: 32px 24px;
+  box-shadow: 0 0 0 4px #0d3b35, 0 0 32px rgba(95, 255, 215, 0.35);
+}
+
+.hero-pixel {
+  width: 180px;
+  max-width: 70%;
+  image-rendering: pixelated;
+  margin-bottom: 18px;
+}
+
+.npc-sprite {
+  width: 170px;
+  max-width: 70%;
+  image-rendering: pixelated;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: 56px;
+  margin: 8px 0;
+  letter-spacing: 8px;
+  color: #7dffd9;
+  text-shadow: 4px 4px 0 #07342d;
+}
+
+h2 {
+  color: #ffef9a;
+  margin-top: 8px;
+}
+
+.subtitle {
+  color: #ffef9a;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.intro,
+.dialogue {
+  line-height: 1.7;
+  font-size: 16px;
 }
 
 button {
-  background: #00ffcc;
-  color: black;
-  border: none;
-  padding: 15px 30px;
+  margin: 10px;
+  padding: 14px 22px;
+  border: 3px solid #d8fff6;
+  background: #102c2a;
+  color: #d8fff6;
+  font-family: "Courier New", monospace;
+  font-size: 15px;
   cursor: pointer;
-  font-size: 16px;
-}
-.pixel-art {
-  font-size: 40px;
-  line-height: 1;
+  box-shadow: 4px 4px 0 #000;
 }
 
-body {
-  background: black;
-  color: #00ffcc;
-  font-family: 'Courier New', monospace;
-  text-align: center;
-  padding-top: 80px;
+button:hover {
+  background: #5fffd7;
+  color: #06100e;
+}
+
+.choices {
+  margin-top: 20px;
 }
