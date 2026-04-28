@@ -59,7 +59,7 @@ function enterMineralRealm() {
   `;
 }
 
-function let aionQuestionsAsked = 0;
+let aionQuestionsAsked = 0;
 
 async function askAion(question) {
   const responseBox = document.getElementById("aion-response");
