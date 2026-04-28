@@ -79,19 +79,37 @@ function enterMineralRealm() {
   `;
 }
 
-async function askAion(question) {
-  const responseBox = document.getElementById("aion-response");
+async function function askAion(type) {
+  let response = "";
 
-  if (aionQuestionsAsked >= 3) {
-    responseBox.innerHTML = `
-      <p class="dialogue">
-        ÂIÖN returns to silence.<br><br>
-        “Three questions have been asked.<br>
-        Now… hold what has been remembered.”
-      </p>
-    `;
-    return;
+  if (type === "identity") {
+    response = `
+      “You are not the movement…<br><br>
+      You are that which remains when all motion ends.<br>
+      The silent witness beneath all becoming.”`;
   }
+
+  if (type === "inner") {
+    response = `
+      “You carry memory.<br><br>
+      Not of this life alone…<br>
+      but of the Earth itself.<br>
+      Of pressure, time, and transformation.”`;
+  }
+
+  if (type === "stone") {
+    response = `
+      “Like the stone, you endure.<br><br>
+      You are structure.<br>
+      You are presence.<br>
+      You are the foundation upon which life stands.”`;
+  }
+
+  document.getElementById("aion-response").innerHTML = `
+    <p class="dialogue">ÂIÖN speaks:</p>
+    <p class="dialogue">${response}</p>
+  `;
+}
 
   aionQuestionsAsked++;
 
