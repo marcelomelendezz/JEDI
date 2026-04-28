@@ -157,7 +157,7 @@ function enterVegetalRealm() {
   document.getElementById("game").innerHTML = `
     <img src="loraepix.png" class="npc-sprite" alt="Pixel LÖRÃE" />
 
-    <h2>LÖRÃE — The Voice of Becoming</h2>
+    <h2>LÖRÃE — The Voice of the Earth</h2>
 
     <p class="dialogue">
       The air becomes soft.<br>
