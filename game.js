@@ -119,17 +119,18 @@ function receiveStoneGift() {
   document.getElementById("game").innerHTML = `
     <img src="aionpix.png" class="npc-sprite" alt="Pixel ÂIÖN" />
 
-    <h2>You received: Stone of Memory 🜨</h2>
+    <h2>The Stone of Memory reveals its form</h2>
 
     <p class="dialogue">
-      A small crystal appears in your hands.<br><br>
-      “Carry this not as weight…<br>
-      but as remembrance.”<br><br>
-      The next portal begins to shimmer.
+      The crystal in your hands begins to shift...<br><br>
+      “Memory takes the shape your soul resonates with.”<br><br>
+      Choose the form that calls you.
     </p>
 
     <div class="choices">
-      <button onclick="startVegetalPortal()">Continue</button>
+      <button onclick="chooseCrystal('sapphire')">🔵 Sapphire — Clarity</button>
+      <button onclick="chooseCrystal('ruby')">🔴 Ruby — Passion</button>
+      <button onclick="chooseCrystal('emerald')">🟢 Emerald — Growth</button>
     </div>
   `;
 }
