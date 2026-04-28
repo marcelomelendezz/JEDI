@@ -31,6 +31,14 @@ body {
   margin-bottom: 18px;
 }
 
+.portal-sprite {
+  width: 190px;
+  max-width: 70%;
+  image-rendering: pixelated;
+  margin: 18px 0;
+  animation: pulse 1.8s infinite;
+}
+
 .npc-sprite {
   width: 170px;
   max-width: 70%;
