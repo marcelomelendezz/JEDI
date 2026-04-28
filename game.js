@@ -55,6 +55,15 @@ function enterMineralRealm() {
   `;
 }
 
+function askAion(question) {
+  document.getElementById("aion-response").innerHTML = `
+    <p class="dialogue">
+      “I am the stone that remembers.<br>
+      You are that which stands… even when all moves.”
+    </p>
+  `;
+}
+
 function returnToPortal() {
   document.getElementById("game").innerHTML = `
     <h2>You received: Stone of Memory 🜨</h2>
