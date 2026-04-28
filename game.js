@@ -1,6 +1,6 @@
 function enterGarden() {
   document.getElementById("game").innerHTML = `
-    <img src="yoda-pixel.png" class="npc-sprite" alt="Pixel Yod'Da" />
+    <img src="yodda-pixel.png" class="npc-sprite" alt="Pixel Yod'Da" />
 
     <h2>Yod'Da appears...</h2>
 
