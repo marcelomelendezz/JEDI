@@ -9,7 +9,14 @@ function enterGarden() {
 
 function meetYodda() {
   document.getElementById("game").innerHTML = `
-    <h2>🧙 Yod'Da appears...</h2>
+    <div class="yodda">
+  (•_•)
+  /| |\\
+   / \\
+</div>
+
+<p>Yod'Da emerges from the pixels...</p>
+<p>“Ready to play… are you?”</p>
     <p>“Ready to play… are you?”</p>
 
     <button onclick="startJourney()">Yes</button>
