@@ -17,7 +17,6 @@ function meetYodda() {
 
 <p>Yod'Da emerges from the pixels...</p>
 <p>“Ready to play… are you?”</p>
-    <p>“Ready to play… are you?”</p>
 
     <button onclick="startJourney()">Yes</button>
     <button onclick="startJourney()">No</button>
