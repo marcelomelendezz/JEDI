@@ -69,11 +69,11 @@ function enterMineralRealm() {
       A presence speaks from within the stone...
     </p>
 
-    <div class="choices">
-      <button onclick="askAion('ÂIÖN, ¿quién soy yo ante la memoria de la piedra?')">Who am I?</button>
-      <button onclick="askAion('ÂIÖN, ¿qué sostengo dentro de mí?')">What do I carry?</button>
-      <button onclick="askAion('ÂIÖN, muéstrame mi esencia desde el Reino Mineral.')">My essence</button>
-    </div>
+<div class="choices">
+  <button onclick="askAion('identity')">Who am I… beneath all movement?</button>
+  <button onclick="askAion('inner')">What do I carry within me?</button>
+  <button onclick="askAion('stone')">What do I share with the stone?</button>
+</div>
 
     <div id="aion-response"></div>
   `;
