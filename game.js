@@ -237,16 +237,126 @@ function receiveSeedGift() {
 
 function startAnimalPortal() {
   document.getElementById("game").innerHTML = `
-    <h2>The Third Portal Begins to Awaken</h2>
+    <img src="portalRA.png" class="portal-sprite" alt="Pixel Animal Portal" />
+
+    <h2>The Third Portal Opens</h2>
 
     <p class="dialogue">
-      The Seed of Becoming pulses with life.<br>
-      Somewhere in the distance… a heartbeat answers.<br><br>
-      The Animal Realm is near.
+      The Seed of Becoming pulses in your hands.<br>
+      A heartbeat rises from deep within the forest.<br><br>
+      Claws. Wings. Breath. Instinct.<br>
+      The Animal Realm is calling.
     </p>
 
     <div class="choices">
-      <button onclick="alert('Next: ĐŘAVÜK — Animal Realm')">Continue</button>
+      <button onclick="enterAnimalRealm()">Enter the Animal Realm</button>
+    </div>
+  `;
+}
+
+function enterAnimalRealm() {
+  document.getElementById("game").innerHTML = `
+    <img src="dravukpix.png" class="npc-sprite" alt="Pixel ĐŘAVÜK" />
+
+    <h2>ĐŘAVÜK — The Wild Heartbeat</h2>
+
+    <p class="dialogue">
+      The ground trembles beneath your feet.<br>
+      A primal presence steps from the shadows.<br><br>
+      It does not speak first with words…<br>
+      it speaks through your heartbeat.
+    </p>
+
+    <p class="dialogue">
+      “Little one…<br>
+      before you think,<br>
+      remember how to feel.”
+    </p>
+
+    <div class="choices">
+      <button onclick="askDravuk('instinct')">What does my instinct know?</button>
+      <button onclick="askDravuk('fear')">What if I am afraid?</button>
+      <button onclick="askDravuk('wild')">How do I become wild again?</button>
+    </div>
+
+    <div id="dravuk-response"></div>
+  `;
+}
+
+function askDravuk(type) {
+  let response = "";
+
+  if (type === "instinct") {
+    response = `
+      “Your instinct knows the path<br>
+      before your mind names the road.<br><br>
+      Trust the pulse.<br>
+      Trust the body.<br>
+      Trust the ancient animal within.”`;
+  }
+
+  if (type === "fear") {
+    response = `
+      “Fear is not your enemy.<br><br>
+      It is a gatekeeper.<br>
+      Bow to it…<br>
+      then walk through.”`;
+  }
+
+  if (type === "wild") {
+    response = `
+      “You become wild again<br>
+      when you stop asking permission<br>
+      to be what you already are.<br><br>
+      Run. Sing. Create. Fly.”`;
+  }
+
+  document.getElementById("dravuk-response").innerHTML = `
+    <p class="dialogue">ĐŘAVÜK speaks:</p>
+    <p class="dialogue">${response}</p>
+
+    <div class="choices">
+      <button onclick="receiveFeatherGift()">Receive the Mythic Feather</button>
+    </div>
+  `;
+}
+
+function receiveFeatherGift() {
+  document.getElementById("game").innerHTML = `
+    <img src="dravukpix.png" class="npc-sprite" alt="Pixel ĐŘAVÜK" />
+
+    <h2>You received: Mythic Feather of Sovereignty 🪶</h2>
+
+    <p class="dialogue">
+      A feather of impossible colors falls into your hands.<br><br>
+      “You are free...<br>
+      it's your nature,<br>
+      it's in your bones.<br><br>
+      So, be bold, be wild, dare to fly!<br>
+      Write your own story...”<br><br>
+      The feather glows.<br>
+      A hidden network begins to awaken beneath the garden.
+    </p>
+
+    <div class="choices">
+      <button onclick="startMycelialPortal()">Continue</button>
+    </div>
+  `;
+}
+
+function startMycelialPortal() {
+  document.getElementById("game").innerHTML = `
+    <h2>The Fourth Portal Begins to Awaken</h2>
+
+    <p class="dialogue">
+      The Mythic Feather becomes still.<br>
+      Beneath your feet, unseen threads begin to glow.<br><br>
+      The Mycelial Realm is near.<br>
+      The Invisible Network is listening.
+    </p>
+
+    <div class="choices">
+      <button onclick="alert('Next: MỸW — Mycelial Realm')">Continue</button>
     </div>
   `;
 }
