@@ -1,3 +1,5 @@
+let aionQuestionsAsked = 0;
+
 function enterGarden() {
   document.getElementById("game").innerHTML = `
     <img src="yoddapix.png" class="npc-sprite" alt="Pixel Yod'Da" />
@@ -12,7 +14,25 @@ function enterGarden() {
 
     <div class="choices">
       <button onclick="startJourney()">Yes, I am ready</button>
-      <button onclick="startJourney()">I think so...</button>
+      <button onclick="notReady()">No, I am not ready</button>
+    </div>
+  `;
+}
+
+function notReady() {
+  document.getElementById("game").innerHTML = `
+    <img src="yoddapix.png" class="npc-sprite" alt="Pixel Yod'Da" />
+
+    <h2>The Garden closes...</h2>
+
+    <p class="dialogue">
+      “Not ready, you are.<br>
+      And wrong, this is not.<br><br>
+      Return when play in your heart awakens.”
+    </p>
+
+    <div class="choices">
+      <button onclick="location.reload()">Return to the Beginning</button>
     </div>
   `;
 }
@@ -40,7 +60,7 @@ function enterMineralRealm() {
   aionQuestionsAsked = 0;
   
   document.getElementById("game").innerHTML = `
-    <img src="aionpix.png" class="npc-sprite" />
+    <img src="aionpix.png" class="npc-sprite" alt="Pixel ÂIÖN" />
 
     <h2>ÂIÖN — Memory in the Stone</h2>
 
@@ -50,16 +70,14 @@ function enterMineralRealm() {
     </p>
 
     <div class="choices">
-      <button onclick="askAion('who am i')">Who am I?</button>
-      <button onclick="askAion('what do i carry')">What do I carry?</button>
-      <button onclick="askAion('what is my essence')">My essence</button>
+      <button onclick="askAion('ÂIÖN, ¿quién soy yo ante la memoria de la piedra?')">Who am I?</button>
+      <button onclick="askAion('ÂIÖN, ¿qué sostengo dentro de mí?')">What do I carry?</button>
+      <button onclick="askAion('ÂIÖN, muéstrame mi esencia desde el Reino Mineral.')">My essence</button>
     </div>
 
     <div id="aion-response"></div>
   `;
 }
-
-let aionQuestionsAsked = 0;
 
 async function askAion(question) {
   const responseBox = document.getElementById("aion-response");
@@ -114,19 +132,4 @@ async function askAion(question) {
       </p>
     `;
   }
-}
-
-function returnToPortal() {
-  document.getElementById("game").innerHTML = `
-    <h2>You received: Stone of Memory 🜨</h2>
-
-    <p class="dialogue">
-      A small crystal appears in your hands.<br><br>
-      The next portal begins to shimmer...
-    </p>
-
-    <div class="choices">
-      <button onclick="enterGarden()">Return to Yod'Da</button>
-    </div>
-  `;
 }
