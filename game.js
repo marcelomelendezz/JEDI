@@ -36,7 +36,7 @@ function startJourney() {
 
 function enterMineralRealm() {
   document.getElementById("game").innerHTML = `
-    <img src="aion-pixel.png" class="npc-sprite" />
+    <img src="aionpix.png" class="npc-sprite" />
 
     <h2>ÂIÖN — Memory in the Stone</h2>
 
