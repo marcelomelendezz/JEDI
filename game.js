@@ -135,6 +135,57 @@ function receiveStoneGift() {
   `;
 }
 
+function chooseCrystal(type) {
+  let name = "";
+  let message = "";
+  let emoji = "";
+
+  if (type === "sapphire") {
+    name = "Sapphire Crystal";
+    emoji = "🔵";
+    message = `
+      “Clarity is your gift.<br><br>
+      You see beyond illusion.<br>
+      You remember truth.”`;
+  }
+
+  if (type === "ruby") {
+    name = "Ruby Crystal";
+    emoji = "🔴";
+    message = `
+      “Passion burns within you.<br><br>
+      You are fire in motion.<br>
+      You remember desire.”`;
+  }
+
+  if (type === "emerald") {
+    name = "Emerald Crystal";
+    emoji = "🟢";
+    message = `
+      “Growth lives within you.<br><br>
+      You are ever-becoming.<br>
+      You remember life.”`;
+  }
+
+  document.getElementById("game").innerHTML = `
+    <img src="aionpix.png" class="npc-sprite" alt="Pixel ÂIÖN" />
+
+    <h2>You received: ${name} ${emoji}</h2>
+
+    <p class="dialogue">
+      A crystal forms fully in your hands.<br><br>
+      ${message}<br><br>
+      “Carry this not as weight…<br>
+      but as remembrance.”<br><br>
+      The next portal begins to shimmer.
+    </p>
+
+    <div class="choices">
+      <button onclick="startVegetalPortal()">Continue</button>
+    </div>
+  `;
+}
+
 function startVegetalPortal() {
   document.getElementById("game").innerHTML = `
     <img src="portalRV.png" class="portal-sprite" alt="Pixel Vegetal Portal" />
