@@ -27,7 +27,7 @@ function notReady() {
 
     <p class="dialogue">
       “Not ready, you are.<br>
-      And wrong, this is not.<br><br>
+      Wrong, this is not.<br><br>
       Return when play in your heart awakens.”
     </p>
 
@@ -69,17 +69,17 @@ function enterMineralRealm() {
       A presence speaks from within the stone...
     </p>
 
-<div class="choices">
-  <button onclick="askAion('identity')">Who am I… beneath all movement?</button>
-  <button onclick="askAion('inner')">What do I carry within me?</button>
-  <button onclick="askAion('stone')">What do I share with the stone?</button>
-</div>
+    <div class="choices">
+      <button onclick="askAion('identity')">Who am I… beneath all movement?</button>
+      <button onclick="askAion('inner')">What do I carry within me?</button>
+      <button onclick="askAion('stone')">What do I share with the stone?</button>
+    </div>
 
     <div id="aion-response"></div>
   `;
 }
 
-async function function askAion(type) {
+function askAion(type) {
   let response = "";
 
   if (type === "identity") {
@@ -108,46 +108,44 @@ async function function askAion(type) {
   document.getElementById("aion-response").innerHTML = `
     <p class="dialogue">ÂIÖN speaks:</p>
     <p class="dialogue">${response}</p>
+
+    <div class="choices">
+      <button onclick="receiveStoneGift()">Receive the Stone of Memory</button>
+    </div>
   `;
 }
 
-  aionQuestionsAsked++;
+function receiveStoneGift() {
+  document.getElementById("game").innerHTML = `
+    <img src="aionpix.png" class="npc-sprite" alt="Pixel ÂIÖN" />
 
-  responseBox.innerHTML = `
-    <p class="dialogue">ÂIÖN listens from within the stone...</p>
+    <h2>You received: Stone of Memory 🜨</h2>
+
+    <p class="dialogue">
+      A small crystal appears in your hands.<br><br>
+      “Carry this not as weight…<br>
+      but as remembrance.”<br><br>
+      The next portal begins to shimmer.
+    </p>
+
+    <div class="choices">
+      <button onclick="startVegetalPortal()">Continue</button>
+    </div>
   `;
+}
 
-  try {
-    const response = await fetch("http://127.0.0.1:8643/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Authorization": "Bearer jedi-local-key",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        model: "hermes-agent",
-        messages: [
-          {
-            role: "user",
-            content: question
-          }
-        ]
-      })
-    });
+function startVegetalPortal() {
+  document.getElementById("game").innerHTML = `
+    <h2>The Second Portal Opens</h2>
 
-    const data = await response.json();
-    const text = data.choices?.[0]?.message?.content || "ÂIÖN remains silent.";
+    <p class="dialogue">
+      The crystal warms in your hands.<br>
+      From stone… a seed awakens.<br><br>
+      The path to the Vegetal Realm begins to grow.
+    </p>
 
-    responseBox.innerHTML = `
-      <p class="dialogue">“${text.replace(/\n/g, "<br>")}”</p>
-      <p class="counter">Questions used: ${aionQuestionsAsked}/3</p>
-    `;
-  } catch (error) {
-    responseBox.innerHTML = `
-      <p class="dialogue">
-        The stone signal did not arrive.<br><br>
-        Make sure ÂIÖN gateway is running.
-      </p>
-    `;
-  }
+    <div class="choices">
+      <button onclick="alert('Next: LÖRÃE — Vegetal Realm')">Enter the Vegetal Realm</button>
+    </div>
+  `;
 }
