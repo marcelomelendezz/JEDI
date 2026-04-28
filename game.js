@@ -36,20 +36,22 @@ function startJourney() {
 
 function enterMineralRealm() {
   document.getElementById("game").innerHTML = `
+    <img src="aion-pixel.png" class="npc-sprite" />
+
     <h2>ÂIÖN — Memory in the Stone</h2>
 
     <p class="dialogue">
-      The air becomes still.<br>
-      Mountains breathe in silence.<br><br>
-      A deep voice rises from the stone:<br><br>
-      “I remain.<br>
-      I am the memory beneath your feet.<br>
-      Before you move forward... remember your center.”
+      The ground becomes still.<br><br>
+      A presence speaks from within the stone...
     </p>
 
     <div class="choices">
-      <button onclick="returnToPortal()">Receive the Stone Gift</button>
+      <button onclick="askAion('who am i')">Who am I?</button>
+      <button onclick="askAion('what do i carry')">What do I carry?</button>
+      <button onclick="askAion('what is my essence')">My essence</button>
     </div>
+
+    <div id="aion-response"></div>
   `;
 }
 
