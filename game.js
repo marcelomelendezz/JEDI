@@ -746,7 +746,7 @@ function receiveMirrorGift() {
     </p>
 
     <div class="choices">
-      <button onclick="awakenAlebrije()">Awaken the Alebrije</button>
+      <button onclick="awakenAlebrije()">Awaken your Alebrije</button>
     </div>
   `;
 }
