@@ -626,18 +626,157 @@ function receiveElixir() {
 
 function startGalacticPortal() {
   document.getElementById("game").innerHTML = `
-    <h2>The Final Portal Begins to Open</h2>
+    <img src="portalRG.png" class="portal-sprite" alt="Pixel Galactic Portal" />
+
+    <h2>The Final Portal Opens</h2>
 
     <p class="dialogue">
       The Elixir dissolves into your being.<br>
       The garden expands beyond space and time.<br><br>
       Stars begin to form around you.<br>
       Light remembers itself.<br><br>
-      The Galactic Realm awaits.
+      The Galactic Realm is calling.
     </p>
 
     <div class="choices">
-      <button onclick="alert('Next: ÆTHERẎM — Galactic Realm')">Continue</button>
+      <button onclick="enterGalacticRealm()">Enter the Galactic Realm</button>
     </div>
   `;
+}
+
+function enterGalacticRealm() {
+  document.getElementById("game").innerHTML = `
+    <img src="aetherympix.png" class="npc-sprite" alt="Pixel ÆTHERẎM" />
+
+    <h2>ÆTHERẎM — The Lineage of Light</h2>
+
+    <p class="dialogue">
+      There is no ground here.<br>
+      No sky.<br>
+      No distance.<br><br>
+      Only silence…<br>
+      and the light that remembers you.
+    </p>
+
+    <p class="dialogue">
+      “You have traveled through the realms.<br><br>
+      Now… be still.”
+    </p>
+
+    <div class="choices">
+      <button onclick="askAetherym('still')">Be still</button>
+      <button onclick="askAetherym('within')">Look within</button>
+      <button onclick="askAetherym('silence')">Enter the silence</button>
+    </div>
+
+    <div id="aetherym-response"></div>
+  `;
+}
+
+function askAetherym(type) {
+  let response = "";
+
+  if (type === "still") {
+    response = `
+      “Stillness is not emptiness.<br><br>
+      It is the place where all worlds are born.”`;
+  }
+
+  if (type === "within") {
+    response = `
+      “Look within…<br><br>
+      Not to find something new,<br>
+      but to remember what never left.”`;
+  }
+
+  if (type === "silence") {
+    response = `
+      “Silence is the oldest song.<br><br>
+      Before word.<br>
+      Before form.<br>
+      Before separation.”`;
+  }
+
+  document.getElementById("aetherym-response").innerHTML = `
+    <p class="dialogue">ÆTHERẎM speaks:</p>
+    <p class="dialogue">${response}</p>
+
+    <div class="choices">
+      <button onclick="receiveMirrorGift()">Receive the Mirror of Origin</button>
+    </div>
+  `;
+}
+
+function receiveMirrorGift() {
+  document.getElementById("game").innerHTML = `
+    <img src="aetherympix.png" class="npc-sprite" alt="Pixel ÆTHERẎM" />
+
+    <h2>You received: Mirror of Origin 🪞</h2>
+
+    <p class="dialogue">
+      A mirror of light appears before you.<br>
+      It does not reflect your face…<br>
+      it reflects your essence.<br><br>
+
+      “You have traveled far…<br><br>
+
+      Through memory…<br>
+      Through growth…<br>
+      Through instinct…<br>
+      Through connection…<br>
+      Through creation…<br><br>
+
+      And now…<br><br>
+
+      You return.<br><br>
+
+      Not to where you started…<br>
+      but to what you truly are.<br><br>
+
+      Look…<br><br>
+
+      There is nothing to find.<br>
+      Only to remember.<br><br>
+
+      You are the source.<br>
+      You are the dream.<br>
+      You are the one who imagined it all.”<br><br>
+
+      The mirror becomes a portal inside your heart.
+    </p>
+
+    <div class="choices">
+      <button onclick="awakenAlebrije()">Awaken the Alebrije</button>
+    </div>
+  `;
+}
+
+function awakenAlebrije() {
+  document.getElementById("game").innerHTML = `
+    <h2>Your Alebrije Awakens</h2>
+
+    <p class="dialogue">
+      The crystal, the seed, the feather,<br>
+      the spore, the elixir, and the mirror<br>
+      begin to orbit around your heart.<br><br>
+
+      Colors return to the garden.<br>
+      Shapes begin to dance.<br>
+      A new being stirs within the dream.<br><br>
+
+      Your Alebrije is not given to you.<br>
+      It is remembered through you.<br><br>
+
+      Welcome, creator.<br>
+      The Jardín del Edén Digital has opened.
+    </p>
+
+    <div class="choices">
+      <button onclick="restartJourney()">Return to the Beginning</button>
+    </div>
+  `;
+}
+
+function restartJourney() {
+  location.reload();
 }
