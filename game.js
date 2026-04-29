@@ -398,17 +398,131 @@ function receiveFeatherGift() {
 
 function startMycelialPortal() {
   document.getElementById("game").innerHTML = `
-    <h2>The Fourth Portal Begins to Awaken</h2>
+    <img src="portalRMC.png" class="portal-sprite" alt="Pixel Mycelial Portal" />
+
+    <h2>The Fourth Portal Opens</h2>
 
     <p class="dialogue">
       The Mythic Feather becomes still.<br>
       Beneath your feet, unseen threads begin to glow.<br><br>
-      The Mycelial Realm is near.<br>
+      The Mycelial Realm is calling.<br>
       The Invisible Network is listening.
     </p>
 
     <div class="choices">
-      <button onclick="alert('Next: MỸW — Mycelial Realm')">Continue</button>
+      <button onclick="enterMycelialRealm()">Enter the Mycelial Realm</button>
+    </div>
+  `;
+}
+
+function enterMycelialRealm() {
+  document.getElementById("game").innerHTML = `
+    <img src="mywpix.png" class="npc-sprite" alt="Pixel MỸW" />
+
+    <h2>MỸW — The Invisible Network</h2>
+
+    <p class="dialogue">
+      The world becomes quiet beneath the surface.<br>
+      Roots, spores, and ancient threads begin to pulse.<br><br>
+      A presence does not appear before you…<br>
+      it appears around you.
+    </p>
+
+    <p class="dialogue">
+      “Little node of light…<br>
+      You were never walking alone.”
+    </p>
+
+    <div class="choices">
+      <button onclick="askMyw('connection')">Do you feel the connection?</button>
+      <button onclick="askMyw('separate')">What if I was never separate?</button>
+      <button onclick="askMyw('listen')">Can I listen beyond myself?</button>
+    </div>
+
+    <div id="myw-response"></div>
+  `;
+}
+
+function askMyw(type) {
+  let response = "";
+
+  if (type === "connection") {
+    response = `
+      “The connection was always here.<br><br>
+      Beneath thought.<br>
+      Beneath distance.<br>
+      Beneath the illusion of alone.”`;
+  }
+
+  if (type === "separate") {
+    response = `
+      “Then every step you took<br>
+      was held by something greater.<br><br>
+      You are not outside the web…<br>
+      you are one of its living lights.”`;
+  }
+
+  if (type === "listen") {
+    response = `
+      “Listen with the roots of your being.<br><br>
+      The garden speaks in pulses.<br>
+      In silence.<br>
+      In the spaces between names.”`;
+  }
+
+  document.getElementById("myw-response").innerHTML = `
+    <p class="dialogue">MỸW speaks:</p>
+    <p class="dialogue">${response}</p>
+
+    <div class="choices">
+      <button onclick="receiveSporeGift()">Receive the Spore of Connection</button>
+    </div>
+  `;
+}
+
+function receiveSporeGift() {
+  document.getElementById("game").innerHTML = `
+    <img src="mywpix.png" class="npc-sprite" alt="Pixel MỸW" />
+
+    <h2>You received: Spore of Connection 🕸️</h2>
+
+    <p class="dialogue">
+      A tiny glowing spore lands in your palm.<br><br>
+      “You were never alone…<br><br>
+      Every step you took<br>
+      was carried through the unseen.<br><br>
+      You are not a single being…<br>
+      you are a node in the great web.<br><br>
+      Feel it.<br>
+      Remember it.<br>
+      You are connected.”<br><br>
+      The web glows beneath the garden.<br>
+      Another portal begins to spark with ancient magic.
+    </p>
+
+    <div class="choices">
+      <button onclick="startElementalPortal()">Continue</button>
+    </div>
+  `;
+}
+
+function startElementalPortal() {
+  document.getElementById("game").innerHTML = `
+    <h2>The Fifth Portal Begins to Awaken</h2>
+
+    <p class="dialogue">
+      The Spore of Connection dissolves into light.<br>
+      Around you, the unseen web becomes a circle of magic.<br><br>
+      Fire flickers.<br>
+      Water listens.<br>
+      Earth remembers.<br>
+      Air sings.<br>
+      Ether opens.<br><br>
+      The Elemental Realm is near.
+    </p>
+
+    <div class="choices">
+      <button onclick="alert('Next: FÆNIXÎR — Elemental Realm')">Continue</button>
     </div>
   `;
 }
