@@ -22,16 +22,20 @@ const sounds = {
 };
 
 function startBackgroundMusic() {
-  if (bgMusicStarted && currentMusic && !currentMusic.paused) return;
+  console.log("Trying to start background music...");
+
+  if (currentMusic && !currentMusic.paused) {
+    console.log("Music already playing.");
+    return;
+  }
 
   currentMusic = new Audio(musicTracks[musicIndex]);
-  currentMusic.volume = 0.45;
+  currentMusic.volume = 0.55;
   currentMusic.loop = false;
   currentMusic.preload = "auto";
 
   currentMusic.addEventListener("ended", () => {
     musicIndex = (musicIndex + 1) % musicTracks.length;
-    bgMusicStarted = false;
     startBackgroundMusic();
   });
 
@@ -42,13 +46,18 @@ function startBackgroundMusic() {
     })
     .catch((error) => {
       bgMusicStarted = false;
-      console.log("Background music blocked or failed:", error);
+      console.log("Background music failed:", error);
     });
 }
+
+document.addEventListener("click", () => {
+  startBackgroundMusic();
+}, { once: true });
 
 function playSound(fileName, volume = 0.8) {
   const sound = new Audio(fileName);
   sound.volume = volume;
+
   sound.play().catch((error) => {
     console.log("Sound could not play:", fileName, error);
   });
