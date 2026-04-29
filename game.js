@@ -24,35 +24,30 @@ const sounds = {
 function startBackgroundMusic() {
   console.log("Trying to start background music...");
 
-  if (currentMusic && !currentMusic.paused) {
-    console.log("Music already playing.");
-    return;
+  if (!currentMusic) {
+    currentMusic = document.createElement("audio");
+    currentMusic.src = musicTracks[musicIndex];
+    currentMusic.volume = 0.55;
+    currentMusic.preload = "auto";
+    currentMusic.style.display = "none";
+    document.body.appendChild(currentMusic);
+
+    currentMusic.addEventListener("ended", () => {
+      musicIndex = (musicIndex + 1) % musicTracks.length;
+      currentMusic.src = musicTracks[musicIndex];
+      currentMusic.play();
+    });
   }
-
-  currentMusic = new Audio(musicTracks[musicIndex]);
-  currentMusic.volume = 0.55;
-  currentMusic.loop = false;
-  currentMusic.preload = "auto";
-
-  currentMusic.addEventListener("ended", () => {
-    musicIndex = (musicIndex + 1) % musicTracks.length;
-    startBackgroundMusic();
-  });
 
   currentMusic.play()
     .then(() => {
       bgMusicStarted = true;
-      console.log("Background music playing:", musicTracks[musicIndex]);
+      console.log("Background music playing:", currentMusic.src);
     })
     .catch((error) => {
-      bgMusicStarted = false;
       console.log("Background music failed:", error);
     });
 }
-
-document.addEventListener("click", () => {
-  startBackgroundMusic();
-}, { once: true });
 
 function playSound(fileName, volume = 0.8) {
   const sound = new Audio(fileName);
