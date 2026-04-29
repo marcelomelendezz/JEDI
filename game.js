@@ -896,7 +896,7 @@ function claimArtifact() {
     <p class="dialogue">
       Your journey has forged a unique imprint.<br><br>
       Enter your Universal Profile address<br>
-      to receive your Wand of Origin.
+      to receive your Excalibur.
     </p>
 
     <input id="walletInput" placeholder="0x..." style="padding:10px; width:80%; margin-top:10px;" />
@@ -926,7 +926,7 @@ function mintArtifact() {
       <h2>Artifact Forged</h2>
 
       <p class="dialogue">
-        Your Wand of Origin has been minted.<br><br>
+        Your Excalibur has been minted.<br><br>
         It now lives within your Universal Profile.<br><br>
 
         The Seed within it will evolve…<br>
