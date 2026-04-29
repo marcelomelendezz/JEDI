@@ -508,21 +508,136 @@ function receiveSporeGift() {
 
 function startElementalPortal() {
   document.getElementById("game").innerHTML = `
-    <h2>The Fifth Portal Begins to Awaken</h2>
+    <img src="portalRE.png" class="portal-sprite" alt="Pixel Elemental Portal" />
+
+    <h2>The Fifth Portal Opens</h2>
 
     <p class="dialogue">
-      The Spore of Connection dissolves into light.<br>
-      Around you, the unseen web becomes a circle of magic.<br><br>
+      The web dissolves into light.<br>
+      Energy begins to swirl around you.<br><br>
       Fire flickers.<br>
-      Water listens.<br>
-      Earth remembers.<br>
-      Air sings.<br>
-      Ether opens.<br><br>
-      The Elemental Realm is near.
+      Water flows.<br>
+      Air whispers.<br>
+      Earth rises.<br>
+      Ether expands.<br><br>
+      The Elemental Realm has awakened.
     </p>
 
     <div class="choices">
-      <button onclick="alert('Next: FÆNIXÎR — Elemental Realm')">Continue</button>
+      <button onclick="enterElementalRealm()">Enter the Elemental Realm</button>
+    </div>
+  `;
+}
+
+function enterElementalRealm() {
+  document.getElementById("game").innerHTML = `
+    <img src="faenixirpix.png" class="npc-sprite" alt="Pixel FÆNIXÎR" />
+
+    <h2>FÆNIXÎR — The Awakening of the Guardians</h2>
+
+    <p class="dialogue">
+      The elements gather around you.<br>
+      Not outside… but within.<br><br>
+      A radiant presence emerges from the center of all forces.
+    </p>
+
+    <p class="dialogue">
+      “You have remembered…<br>
+      You have grown…<br>
+      You have chosen…<br>
+      You have connected…<br><br>
+      Now… you are ready to create.”
+    </p>
+
+    <div class="choices">
+      <button onclick="askFaenixir('element')">What element calls me?</button>
+      <button onclick="askFaenixir('power')">What power can I awaken?</button>
+      <button onclick="askFaenixir('transform')">What am I ready to transform?</button>
+    </div>
+
+    <div id="faenixir-response"></div>
+  `;
+}
+
+function askFaenixir(type) {
+  let response = "";
+
+  if (type === "element") {
+    response = `
+      “The element that calls you<br>
+      is the one already alive within you.<br><br>
+      You do not choose it…<br>
+      you remember it.”`;
+  }
+
+  if (type === "power") {
+    response = `
+      “You awaken what you allow yourself to embody.<br><br>
+      Power is not given…<br>
+      it is expressed.”`;
+  }
+
+  if (type === "transform") {
+    response = `
+      “Transformation begins<br>
+      the moment you stop resisting change.<br><br>
+      Burn. Flow. Rise. Dissolve.<br>
+      Become.”`;
+  }
+
+  document.getElementById("faenixir-response").innerHTML = `
+    <p class="dialogue">FÆNIXÎR speaks:</p>
+    <p class="dialogue">${response}</p>
+
+    <div class="choices">
+      <button onclick="receiveElixir()">Receive the Elixir of Creation</button>
+    </div>
+  `;
+}
+
+function receiveElixir() {
+  document.getElementById("game").innerHTML = `
+    <img src="faenixirpix.png" class="npc-sprite" alt="Pixel FÆNIXÎR" />
+
+    <h2>You received: Elixir of Creation 🧪</h2>
+
+    <p class="dialogue">
+      A glowing vial forms between your hands.<br>
+      It shifts between fire, water, air, earth, and light.<br><br>
+      “You are not here to observe the magic…<br><br>
+      You are here to become it.<br><br>
+      Within you burns the fire of transformation,<br>
+      the flow of water,<br>
+      the breath of air,<br>
+      the memory of earth,<br>
+      and the silence of ether.<br><br>
+      Drink…<br><br>
+      and remember:<br>
+      You are a creator.”<br><br>
+      The elements spiral into a singular light.<br>
+      A cosmic portal begins to open beyond the garden.
+    </p>
+
+    <div class="choices">
+      <button onclick="startGalacticPortal()">Continue</button>
+    </div>
+  `;
+}
+
+function startGalacticPortal() {
+  document.getElementById("game").innerHTML = `
+    <h2>The Final Portal Begins to Open</h2>
+
+    <p class="dialogue">
+      The Elixir dissolves into your being.<br>
+      The garden expands beyond space and time.<br><br>
+      Stars begin to form around you.<br>
+      Light remembers itself.<br><br>
+      The Galactic Realm awaits.
+    </p>
+
+    <div class="choices">
+      <button onclick="alert('Next: ÆTHERẎM — Galactic Realm')">Continue</button>
     </div>
   `;
 }
