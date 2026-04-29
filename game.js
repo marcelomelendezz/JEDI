@@ -1,6 +1,72 @@
 let aionQuestionsAsked = 0;
 
+let bgMusicStarted = false;
+let currentMusic = null;
+let musicIndex = 0;
+
+const musicTracks = ["M1.wav", "M2.wav"];
+
+const sounds = {
+  enterGarden: "enterthegardenBTN.mp3",
+  yesReady: "yesiamreadyBTN.mp3",
+  enterMineral: "enterthemineralrealmBTN.mp3",
+  receiveStone: "receivestoneofmemoryBTN.mp3",
+  receiveGift: "receivegiftBTN.mp3",
+  enterVegetal: "enterthevegetalrealmBTN.mp3",
+  enterAnimal: "entertheanimalrealmBTN.mp3",
+  enterMycelial: "enterthemycelialrealmBTN.mp3",
+  enterElemental: "entertheelementalrealmBTN.mp3",
+  enterGalactic: "enterthegalacticrealmBTN.mp3",
+  awakenAlebrije: "awakenyouralebrijeBTN.mp3",
+  approachSword: "approachtheswordBTN.mp3",
+  pullSword: "pulltheswordBTN.mp3",
+  enterLivingGarden: "enterthelivinggardenBTN.mp3"
+};
+
+function startBackgroundMusic() {
+  if (bgMusicStarted) return;
+
+  bgMusicStarted = true;
+  playMusicTrack();
+}
+
+function playMusicTrack() {
+  currentMusic = new Audio(musicTracks[musicIndex]);
+  currentMusic.volume = 0.25;
+  currentMusic.loop = false;
+
+  currentMusic.addEventListener("ended", () => {
+    musicIndex = (musicIndex + 1) % musicTracks.length;
+    playMusicTrack();
+  });
+
+  currentMusic.play().catch(() => {
+    console.log("Background music will start after user interaction.");
+  });
+}
+
+function playSound(fileName, volume = 0.8) {
+  const sound = new Audio(fileName);
+  sound.volume = volume;
+
+  sound.play().catch((error) => {
+    console.log("Sound could not play:", fileName, error);
+  });
+}
+
+function playAndRun(soundFile, nextFunction, delay = 180) {
+  startBackgroundMusic();
+  playSound(soundFile);
+
+  setTimeout(() => {
+    nextFunction();
+  }, delay);
+}
+
 function enterGarden() {
+  startBackgroundMusic();
+  playSound(sounds.enterGarden);
+
   document.getElementById("game").innerHTML = `
     <img src="yoddapix.png" class="npc-sprite" alt="Pixel Yod'Da" />
 
@@ -13,7 +79,7 @@ function enterGarden() {
     </p>
 
     <div class="choices">
-      <button onclick="startJourney()">Yes, I am ready</button>
+      <button onclick="playAndRun(sounds.yesReady, startJourney)">Yes, I am ready</button>
       <button onclick="notReady()">No, I am not ready</button>
     </div>
   `;
@@ -40,7 +106,7 @@ function notReady() {
 function startJourney() {
   document.getElementById("game").innerHTML = `
     <img src="portalRM.png" class="portal-sprite" alt="Pixel Portal" />
-  
+
     <h2>The First Portal Opens</h2>
 
     <p class="dialogue">
@@ -51,14 +117,14 @@ function startJourney() {
     </p>
 
     <div class="choices">
-      <button onclick="enterMineralRealm()">Enter the Mineral Realm</button>
+      <button onclick="playAndRun(sounds.enterMineral, enterMineralRealm)">Enter the Mineral Realm</button>
     </div>
   `;
 }
 
 function enterMineralRealm() {
   aionQuestionsAsked = 0;
-  
+
   document.getElementById("game").innerHTML = `
     <img src="aionpix.png" class="npc-sprite" alt="Pixel ÂIÖN" />
 
@@ -110,7 +176,7 @@ function askAion(type) {
     <p class="dialogue">${response}</p>
 
     <div class="choices">
-      <button onclick="receiveStoneGift()">Receive the Stone of Memory</button>
+      <button onclick="playAndRun(sounds.receiveStone, receiveStoneGift)">Receive the Stone of Memory</button>
     </div>
   `;
 }
@@ -128,9 +194,9 @@ function receiveStoneGift() {
     </p>
 
     <div class="choices">
-      <button onclick="chooseCrystal('sapphire')">🔵 Sapphire — Clarity</button>
-      <button onclick="chooseCrystal('ruby')">🔴 Ruby — Passion</button>
-      <button onclick="chooseCrystal('emerald')">🟢 Emerald — Growth</button>
+      <button onclick="playAndRun(sounds.receiveGift, () => chooseCrystal('sapphire'))">🔵 Sapphire — Clarity</button>
+      <button onclick="playAndRun(sounds.receiveGift, () => chooseCrystal('ruby'))">🔴 Ruby — Passion</button>
+      <button onclick="playAndRun(sounds.receiveGift, () => chooseCrystal('emerald'))">🟢 Emerald — Growth</button>
     </div>
   `;
 }
@@ -200,7 +266,7 @@ function startVegetalPortal() {
     </p>
 
     <div class="choices">
-      <button onclick="enterVegetalRealm()">Enter the Vegetal Realm</button>
+      <button onclick="playAndRun(sounds.enterVegetal, enterVegetalRealm)">Enter the Vegetal Realm</button>
     </div>
   `;
 }
@@ -262,7 +328,7 @@ function askLorae(type) {
     <p class="dialogue">${response}</p>
 
     <div class="choices">
-      <button onclick="receiveSeedGift()">Receive the Seed of Becoming</button>
+      <button onclick="playAndRun(sounds.receiveGift, receiveSeedGift)">Receive the Seed of Becoming</button>
     </div>
   `;
 }
@@ -301,7 +367,7 @@ function startAnimalPortal() {
     </p>
 
     <div class="choices">
-      <button onclick="enterAnimalRealm()">Enter the Animal Realm</button>
+      <button onclick="playAndRun(sounds.enterAnimal, enterAnimalRealm)">Enter the Animal Realm</button>
     </div>
   `;
 }
@@ -368,7 +434,7 @@ function askDravuk(type) {
     <p class="dialogue">${response}</p>
 
     <div class="choices">
-      <button onclick="receiveFeatherGift()">Receive the Mythic Feather</button>
+      <button onclick="playAndRun(sounds.receiveGift, receiveFeatherGift)">Receive the Mythic Feather</button>
     </div>
   `;
 }
@@ -410,7 +476,7 @@ function startMycelialPortal() {
     </p>
 
     <div class="choices">
-      <button onclick="enterMycelialRealm()">Enter the Mycelial Realm</button>
+      <button onclick="playAndRun(sounds.enterMycelial, enterMycelialRealm)">Enter the Mycelial Realm</button>
     </div>
   `;
 }
@@ -475,7 +541,7 @@ function askMyw(type) {
     <p class="dialogue">${response}</p>
 
     <div class="choices">
-      <button onclick="receiveSporeGift()">Receive the Spore of Connection</button>
+      <button onclick="playAndRun(sounds.receiveGift, receiveSporeGift)">Receive the Spore of Connection</button>
     </div>
   `;
 }
@@ -524,7 +590,7 @@ function startElementalPortal() {
     </p>
 
     <div class="choices">
-      <button onclick="enterElementalRealm()">Enter the Elemental Realm</button>
+      <button onclick="playAndRun(sounds.enterElemental, enterElementalRealm)">Enter the Elemental Realm</button>
     </div>
   `;
 }
@@ -590,7 +656,7 @@ function askFaenixir(type) {
     <p class="dialogue">${response}</p>
 
     <div class="choices">
-      <button onclick="receiveElixir()">Receive the Elixir of Creation</button>
+      <button onclick="playAndRun(sounds.receiveGift, receiveElixir)">Receive the Elixir of Creation</button>
     </div>
   `;
 }
@@ -639,7 +705,7 @@ function startGalacticPortal() {
     </p>
 
     <div class="choices">
-      <button onclick="enterGalacticRealm()">Enter the Galactic Realm</button>
+      <button onclick="playAndRun(sounds.enterGalactic, enterGalacticRealm)">Enter the Galactic Realm</button>
     </div>
   `;
 }
@@ -702,7 +768,7 @@ function askAetherym(type) {
     <p class="dialogue">${response}</p>
 
     <div class="choices">
-      <button onclick="receiveMirrorGift()">Receive the Mirror of Origin</button>
+      <button onclick="playAndRun(sounds.receiveGift, receiveMirrorGift)">Receive the Mirror of Origin</button>
     </div>
   `;
 }
@@ -746,7 +812,7 @@ function receiveMirrorGift() {
     </p>
 
     <div class="choices">
-      <button onclick="awakenAlebrije()">Awaken your Alebrije</button>
+      <button onclick="playAndRun(sounds.awakenAlebrije, awakenAlebrije)">Awaken your Alebrije</button>
     </div>
   `;
 }
@@ -768,7 +834,7 @@ function awakenAlebrije() {
     </p>
 
     <div class="choices">
-      <button onclick="approachSword()">Approach the Sword</button>
+      <button onclick="playAndRun(sounds.approachSword, approachSword)">Approach the Sword</button>
     </div>
   `;
 }
@@ -833,7 +899,7 @@ function rememberAndReturn() {
     </p>
 
     <div class="choices">
-      <button onclick="pullTheSword()">Pull the Sword</button>
+      <button onclick="playAndRun(sounds.pullSword, pullTheSword, 350)">Pull the Sword</button>
     </div>
   `;
 }
@@ -858,7 +924,7 @@ function pullTheSword() {
     </p>
 
     <div class="choices">
-      <button onclick="finalIntegration()">Enter the Living Garden</button>
+      <button onclick="playAndRun(sounds.enterLivingGarden, finalIntegration)">Enter the Living Garden</button>
     </div>
   `;
 }
@@ -919,7 +985,7 @@ function mintArtifact() {
     </p>
   `;
 
-  // Aquí después conectas tu backend / script real
+  // Later, connect this to your backend / real minting script.
 
   setTimeout(() => {
     document.getElementById("game").innerHTML = `
@@ -938,4 +1004,8 @@ function mintArtifact() {
       </div>
     `;
   }, 2500);
+}
+
+function restartJourney() {
+  location.reload();
 }
