@@ -886,7 +886,7 @@ function finalIntegration() {
 }
 
 function enterDiscord() {
-  window.open("https://discord.gg/TU_LINK_AQUI", "_blank");
+  window.open("https://discord.gg/XGHyHkdk", "_blank");
 }
 
 function claimArtifact() {
