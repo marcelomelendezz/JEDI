@@ -753,30 +753,189 @@ function receiveMirrorGift() {
 
 function awakenAlebrije() {
   document.getElementById("game").innerHTML = `
-    <h2>Your Alebrije Awakens</h2>
+    <img src="excaliburpix.png" class="npc-sprite" alt="Pixel Excalibur" />
+
+    <h2>The Sword in the Stone</h2>
 
     <p class="dialogue">
-      The crystal, the seed, the feather,<br>
-      the spore, the elixir, and the mirror<br>
-      begin to orbit around your heart.<br><br>
+      At the center of the Garden…<br>
+      a sword rests within the stone.<br><br>
 
-      Colors return to the garden.<br>
-      Shapes begin to dance.<br>
-      A new being stirs within the dream.<br><br>
+      It does not glow.<br>
+      It does not call.<br><br>
 
-      Your Alebrije is not given to you.<br>
-      It is remembered through you.<br><br>
-
-      Welcome, creator.<br>
-      The Jardín del Edén Digital has opened.
+      It simply waits.
     </p>
 
     <div class="choices">
-      <button onclick="restartJourney()">Return to the Beginning</button>
+      <button onclick="approachSword()">Approach the Sword</button>
     </div>
   `;
 }
 
-function restartJourney() {
-  location.reload();
+function approachSword() {
+  document.getElementById("game").innerHTML = `
+    <img src="excaliburpix.png" class="npc-sprite" alt="Pixel Excalibur" />
+
+    <h2>The Sword in the Stone</h2>
+
+    <p class="dialogue">
+      You place your hands upon the sword.<br><br>
+
+      Nothing happens.<br><br>
+
+      A silence surrounds you.
+    </p>
+
+    <div class="choices">
+      <button onclick="summonAlebrije()">Listen within</button>
+    </div>
+  `;
+}
+
+function summonAlebrije() {
+  document.getElementById("game").innerHTML = `
+    <img src="alebrijepix.png" class="npc-sprite" alt="Pixel Alebrije" />
+
+    <h2>Your Alebrije Awakens</h2>
+
+    <p class="dialogue">
+      A presence emerges from within you…<br><br>
+
+      Color.<br>
+      Light.<br>
+      Memory.<br>
+      Magic.<br><br>
+
+      Not separate from you…<br>
+      but born through you.
+    </p>
+
+    <div class="choices">
+      <button onclick="rememberAndReturn()">Remember</button>
+    </div>
+  `;
+}
+
+function rememberAndReturn() {
+  document.getElementById("game").innerHTML = `
+    <img src="excaliburpix.png" class="npc-sprite" alt="Pixel Excalibur" />
+
+    <h2>The Sword in the Stone</h2>
+
+    <p class="dialogue">
+      “The sword does not choose strength…<br>
+      it responds to a heart of wonder.”<br><br>
+
+      You breathe.<br>
+      You feel.<br>
+      You remember.
+    </p>
+
+    <div class="choices">
+      <button onclick="pullTheSword()">Pull the Sword</button>
+    </div>
+  `;
+}
+
+function pullTheSword() {
+  document.getElementById("game").innerHTML = `
+    <img src="excaliburpix.png" class="npc-sprite" alt="Pixel Excalibur" />
+
+    <h2>Excalibur Awakens</h2>
+
+    <p class="dialogue">
+      You believed the magic was outside…<br><br>
+
+      But it was always within you.<br><br>
+
+      Your imagination brings it to life.<br>
+      Your heart unlocks the impossible.<br><br>
+
+      The sword was never hidden…<br><br>
+
+      It was waiting for you to remember who you are.
+    </p>
+
+    <div class="choices">
+      <button onclick="finalIntegration()">Enter the Living Garden</button>
+    </div>
+  `;
+}
+
+function finalIntegration() {
+  document.getElementById("game").innerHTML = `
+    <h2>The Garden is Alive</h2>
+
+    <p class="dialogue">
+      The realms are no longer separate.<br>
+      They live within you now.<br><br>
+
+      The Garden was never a place…<br>
+      it is a way of seeing.<br><br>
+
+      Welcome back, creator.<br>
+      Welcome to the living network.
+    </p>
+
+    <div class="choices">
+      <button onclick="enterDiscord()">Enter the Garden (Discord)</button>
+      <button onclick="claimArtifact()">Claim Your Artifact</button>
+    </div>
+  `;
+}
+
+function enterDiscord() {
+  window.open("https://discord.gg/TU_LINK_AQUI", "_blank");
+}
+
+function claimArtifact() {
+  document.getElementById("game").innerHTML = `
+    <h2>Claim Your Artifact</h2>
+
+    <p class="dialogue">
+      Your journey has forged a unique imprint.<br><br>
+      Enter your Universal Profile address<br>
+      to receive your Wand of Origin.
+    </p>
+
+    <input id="walletInput" placeholder="0x..." style="padding:10px; width:80%; margin-top:10px;" />
+
+    <div class="choices">
+      <button onclick="mintArtifact()">Mint</button>
+    </div>
+  `;
+}
+
+function mintArtifact() {
+  const address = document.getElementById("walletInput").value;
+
+  document.getElementById("game").innerHTML = `
+    <h2>Minting in Progress...</h2>
+
+    <p class="dialogue">
+      The Garden is forging your artifact.<br><br>
+      This may take a moment...
+    </p>
+  `;
+
+  // Aquí después conectas tu backend / script real
+
+  setTimeout(() => {
+    document.getElementById("game").innerHTML = `
+      <h2>Artifact Forged</h2>
+
+      <p class="dialogue">
+        Your Wand of Origin has been minted.<br><br>
+        It now lives within your Universal Profile.<br><br>
+
+        The Seed within it will evolve…<br>
+        as you do.
+      </p>
+
+      <div class="choices">
+        <button onclick="restartJourney()">Return to the Beginning</button>
+      </div>
+    `;
+  }, 2500);
 }
