@@ -1,5 +1,3 @@
-let aionQuestionsAsked = 0;
-
 let bgMusicStarted = false;
 let currentMusic = null;
 let musicIndex = 0;
@@ -24,31 +22,33 @@ const sounds = {
 };
 
 function startBackgroundMusic() {
-  if (bgMusicStarted) return;
+  if (bgMusicStarted && currentMusic && !currentMusic.paused) return;
 
-  bgMusicStarted = true;
-  playMusicTrack();
-}
-
-function playMusicTrack() {
   currentMusic = new Audio(musicTracks[musicIndex]);
-  currentMusic.volume = 0.25;
+  currentMusic.volume = 0.45;
   currentMusic.loop = false;
+  currentMusic.preload = "auto";
 
   currentMusic.addEventListener("ended", () => {
     musicIndex = (musicIndex + 1) % musicTracks.length;
-    playMusicTrack();
+    bgMusicStarted = false;
+    startBackgroundMusic();
   });
 
-  currentMusic.play().catch(() => {
-    console.log("Background music will start after user interaction.");
-  });
+  currentMusic.play()
+    .then(() => {
+      bgMusicStarted = true;
+      console.log("Background music playing:", musicTracks[musicIndex]);
+    })
+    .catch((error) => {
+      bgMusicStarted = false;
+      console.log("Background music blocked or failed:", error);
+    });
 }
 
 function playSound(fileName, volume = 0.8) {
   const sound = new Audio(fileName);
   sound.volume = volume;
-
   sound.play().catch((error) => {
     console.log("Sound could not play:", fileName, error);
   });
