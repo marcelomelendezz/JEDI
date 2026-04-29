@@ -4,7 +4,7 @@ let bgMusicStarted = false;
 let currentMusic = null;
 let musicIndex = 0;
 
-const musicTracks = ["M1.wav", "M2.wav"];
+const musicTracks = ["M1.mp3", "M2.mp3"];
 
 const sounds = {
   enterGarden: "enterthegardenBTN.mp3",
