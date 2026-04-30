@@ -49,7 +49,7 @@ function startBackgroundMusic() {
     });
 }
 
-function playSound(fileName, volume = 0.8) {
+function playSound(fileName, volume = 0.6) {
   const sound = new Audio(fileName);
   sound.volume = volume;
 
