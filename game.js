@@ -27,7 +27,7 @@ function startBackgroundMusic() {
   if (!currentMusic) {
     currentMusic = document.createElement("audio");
     currentMusic.src = musicTracks[musicIndex];
-    currentMusic.volume = 0.55;
+    currentMusic.volume = 0.22;
     currentMusic.preload = "auto";
     currentMusic.style.display = "none";
     document.body.appendChild(currentMusic);
